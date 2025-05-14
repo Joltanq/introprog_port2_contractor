@@ -22,6 +22,7 @@ namespace introprog_port2_contractor
     /// </summary>
     public partial class MainWindow : Window
     {
+        ContractorService contractorService = new ContractorService();
         public MainWindow()
         {
             InitializeComponent();
@@ -32,9 +33,18 @@ namespace introprog_port2_contractor
 
         private void GetContractor_Click(object sender, RoutedEventArgs e)
         {
-            ContractorService contractorService = new ContractorService();
+
             ContractorListbox.ItemsSource = contractorService.GetContractors();
-             
+
+        }
+
+        private void AddContractor_Click(object sender, RoutedEventArgs e)
+        {
+
+            Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateOfBirth.Text, int.Parse(HourlyWage.Text));
+            contractorService.AddContractor(newContractor);
+
+
         }
     }
 }
