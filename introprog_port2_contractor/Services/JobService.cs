@@ -9,18 +9,26 @@ namespace introprog_port2_contractor.Services
 {
     class JobService
     {
-
+        List<Job> jobs = new List<Job>();
     
-
+        public JobService()
+        {
+            jobs.Add(new Job("Plumbing", new DateTime(2024,01,01), 100, true, null));
+        }
 
         public void CreateJob()
         {
     
         }
 
-        public void AssignJob()
+        public List<Job> GetJobs()
         {
+            return jobs.ToList();  
+        }
 
+        public void AssignJob(Contractor ContractorAssigned)
+        {
+            jobs.Add(new Job("Plumbing", new DateTime(2024, 01, 01), 100, false, ContractorAssigned));
         }
 
         public void CompleteJob()

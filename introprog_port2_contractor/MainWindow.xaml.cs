@@ -23,6 +23,7 @@ namespace introprog_port2_contractor
     public partial class MainWindow : Window
     {
         ContractorService contractorService = new ContractorService();
+        JobService JobService = new JobService();  
         public MainWindow()
         {
             InitializeComponent();
@@ -53,6 +54,11 @@ namespace introprog_port2_contractor
             Contractor oldContractor = (Contractor)ContractorListbox.SelectedItem;
             contractorService.RemoveContractor(oldContractor);
             ContractorListbox.ItemsSource = contractorService.GetContractors();
+        }
+
+        private void ShowJobs_Click(object sender, RoutedEventArgs e)
+        {
+            ContractorListbox.ItemsSource = JobService.GetJobs();
         }
     }
 }

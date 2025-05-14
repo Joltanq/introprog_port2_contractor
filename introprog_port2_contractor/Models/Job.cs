@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using introprog_port2_contractor.Models;
 
 
 
@@ -15,9 +16,9 @@ namespace introprog_port2_contractor.Models
         public DateTime JobDate { get; set; }
         public int Cost { get; set; }
         public bool Completed { get; set; }
-        public string ContractorAssigned { get; set; }
+        public Contractor ContractorAssigned { get; set; }
 
-        public Job(string title, DateTime jobDate, int cost, bool completed, string contractorAssigned)
+        public Job(string title, DateTime jobDate, int cost, bool completed, Contractor contractorAssigned)
         {
             Title = title;
             JobDate = jobDate;
@@ -26,7 +27,12 @@ namespace introprog_port2_contractor.Models
             ContractorAssigned = contractorAssigned;
         }
 
-  
-       
+
+        public override string ToString()
+        {
+            return $"{Title} {JobDate} {Cost} {Completed} {ContractorAssigned}";
+        }
+
+
     }
 }

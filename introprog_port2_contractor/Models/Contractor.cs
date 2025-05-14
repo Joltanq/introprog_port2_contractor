@@ -14,6 +14,8 @@ namespace introprog_port2_contractor.Models
         public string StartDate { get; set; }
         public int HourlyWage { get; set; }
 
+       
+
         public Contractor(string firstName, string lastName, string startDate, int hourlyWage)
         {
             
