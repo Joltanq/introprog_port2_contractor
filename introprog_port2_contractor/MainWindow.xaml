@@ -8,22 +8,18 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width ="*" />
+            <ColumnDefinition Width ="1*" />
             <ColumnDefinition Width ="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-       
-            
+
+
         </Grid.RowDefinitions>
-        <Button x:Name="GetContractor" Click="GetContractor_Click" Content="Button" HorizontalAlignment="Left" Margin="265,198,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0"/>
-        <ListBox 
- x:Name="ContractorListbox"
- Grid.Column="1" 
- Background="#de55de"
-Grid.RowSpan="3"
- />
+        <Button x:Name="GetContractor"  Click="GetContractor_Click" Content="Get contractor" HorizontalAlignment="Left" Height="100" Width="100" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" />
+       
+        <ListBox  x:Name="ContractorListbox"  Grid.Column="1"  Background="#de55de" Grid.RowSpan="3"/>
 
 
     </Grid>
