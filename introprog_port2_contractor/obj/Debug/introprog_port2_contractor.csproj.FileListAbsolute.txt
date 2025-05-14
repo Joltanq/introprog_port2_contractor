@@ -1,0 +1,15 @@
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor.csproj.AssemblyReference.cache
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\MainWindow.g.cs
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\App.g.cs
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor_MarkupCompile.cache
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor_MarkupCompile.lref
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\bin\Debug\introprog_port2_contractor.exe.config
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\bin\Debug\introprog_port2_contractor.exe
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\bin\Debug\introprog_port2_contractor.pdb
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\MainWindow.baml
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor.g.resources
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor.Properties.Resources.resources
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor.csproj.GenerateResource.cache
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor.csproj.CoreCompileInputs.cache
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor.exe
+C:\Users\joelt\source\repos\introprog_port2_contractor\introprog_port2_contractor\obj\Debug\introprog_port2_contractor.pdb
