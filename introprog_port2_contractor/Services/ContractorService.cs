@@ -26,7 +26,6 @@ namespace introprog_port2_contractor.Services
 
         
 
-
         public void AddContractor(Contractor newContractor)
         {
             contractors.Add(newContractor); 

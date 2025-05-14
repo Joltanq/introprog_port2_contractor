@@ -42,9 +42,17 @@ namespace introprog_port2_contractor
         {
 
             Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateOfBirth.Text, int.Parse(HourlyWage.Text));
+
             contractorService.AddContractor(newContractor);
 
 
+        }
+
+        private void RemoveContractor_Click(object sender, RoutedEventArgs e)
+        {
+            Contractor oldContractor = (Contractor)ContractorListbox.SelectedItem;
+            contractorService.RemoveContractor(oldContractor);
+            ContractorListbox.ItemsSource = contractorService.GetContractors();
         }
     }
 }

@@ -23,6 +23,8 @@
         </Grid.RowDefinitions>
         <Button x:Name="GetContractor"  Click="GetContractor_Click" Content="Get contractor" HorizontalAlignment="Left" Height="100" Width="100" VerticalAlignment="Top" Grid.Column="0" Grid.Row="5" />
         <Button x:Name="AddContractor" Click="AddContractor_Click" Content="Add contractor" Grid.Column="0" Grid.Row="5" Width="100"/>
+        <Button x:Name="RemoveContractor" Click="RemoveContractor_Click" Content="Remove contractor" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="5" Width="100"/>
+
         <TextBox x:Name="FirstName" Grid.Column="0" Grid.Row="0" BorderBrush="DarkBlue"/>
         <TextBox x:Name="LastName" Grid.Column="0" Grid.Row="1" BorderBrush="DarkBlue"/>
         <TextBox x:Name="DateOfBirth" Grid.Column="0" Grid.Row="2" BorderBrush="DarkBlue"/>
