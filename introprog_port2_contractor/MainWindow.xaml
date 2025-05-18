@@ -44,7 +44,7 @@
                             <TextBlock Text="Last Name" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
                             <TextBox x:Name="LastName" Grid.Column="1" Grid.Row="2" BorderBrush="DarkBlue"/>
                             <TextBlock Text="Date of Birth" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                            <TextBox x:Name="DateOfBirth" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue"/>
+                            <DatePicker x:Name="DateOfBirth" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue"/>
                             <TextBlock Text="Hourly Wage" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
                             <TextBox x:Name="HourlyWage" Grid.Column="1" Grid.Row="4" BorderBrush="DarkBlue"/>
 

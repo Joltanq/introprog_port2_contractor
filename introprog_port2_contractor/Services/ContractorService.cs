@@ -14,8 +14,8 @@ namespace introprog_port2_contractor.Services
         public ContractorService()
         {
 
-            contractors.Add(new Contractor("Bob", "Joe", "asda", 100));
-            contractors.Add(new Contractor("Jane", "Fonda", "asda", 100));
+            contractors.Add(new Contractor("Bob", "Joe", new DateTime(1991, 01, 01), 100));
+            contractors.Add(new Contractor("Jane", "Fonda", new DateTime(1985, 05, 01), 100));
 
         }
 

@@ -42,9 +42,10 @@ namespace introprog_port2_contractor
         private void AddContractor_Click(object sender, RoutedEventArgs e)
         {
 
-            Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateOfBirth.Text, int.Parse(HourlyWage.Text));
+            Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateTime.Parse(DateOfBirth.Text), int.Parse(HourlyWage.Text));
 
             contractorService.AddContractor(newContractor);
+            ContractorListbox.ItemsSource = contractorService.GetContractors(); 
 
 
         }
