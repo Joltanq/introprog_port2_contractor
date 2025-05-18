@@ -10,12 +10,12 @@ namespace introprog_port2_contractor.Services
     class ContractorService
     {
         List<Contractor> contractors = new List<Contractor>();
-
+        
         public ContractorService()
         {
 
-            contractors.Add(new Contractor("Bob", "Joe", new DateTime(1991, 01, 01), 100));
-            contractors.Add(new Contractor("Jane", "Fonda", new DateTime(1985, 05, 01), 100));
+            contractors.Add(new Contractor("Bob", "Joe", new DateTime(1991, 01, 01), 100,true));
+            contractors.Add(new Contractor("Jane", "Fonda", new DateTime(1985, 05, 01), 100, false));
 
         }
 

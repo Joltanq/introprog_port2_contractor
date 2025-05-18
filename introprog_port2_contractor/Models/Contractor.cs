@@ -13,18 +13,20 @@ namespace introprog_port2_contractor.Models
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int HourlyWage { get; set; }
+        public bool IsAssigned { get; set; }
 
 
         // do i need a new attribute to say if it has been assigned? ie isAssigned boolean. once assigned via job service, this updates?
 
 
-        public Contractor(string firstName, string lastName, DateTime DateOfBirth, int hourlyWage)
+        public Contractor(string firstName, string lastName, DateTime DateOfBirth, int hourlyWage, bool isAssigned)
         {
             
             FirstName = firstName;
             LastName = lastName;
             this.DateOfBirth = DateOfBirth;
             HourlyWage = hourlyWage;
+            IsAssigned = isAssigned;
         }
 
         public override string ToString()

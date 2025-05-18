@@ -81,7 +81,7 @@
                         <TextBlock Text="Cost" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
                         <TextBox x:Name="Cost" Grid.Column="1" Grid.Row="2" BorderBrush="DarkBlue"/>
                         <TextBlock Text="ContractorAssigned" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                        <TextBox x:Name="ContractorAssigned" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue"/>
+                        <ComboBox x:Name="ContractorAssigned" DisplayMemberPath="FirstName" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue"/>
                         <TextBlock Text="Completed" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
                         <CheckBox x:Name="IsCompleted" Grid.Column="0" Grid.Row="4"   HorizontalAlignment="Right"  VerticalAlignment="Center" />
                         <TextBlock Text="Job Date" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
@@ -91,7 +91,7 @@
                         <UniformGrid Grid.Row="5" Grid.Column="0" >
                             <Button x:Name="GetJobs" Click="GetJobs_Click" Content="Get Job" HorizontalAlignment="Stretch"  FontSize="10" VerticalAlignment="Top"  />
                             <Button x:Name="CreateJob" Click="CreateJob_Click" Content="Create Job" HorizontalAlignment="Stretch" VerticalAlignment="Top"  FontSize="10" />
-                            <Button x:Name="DeleteJob" Click="DeleteJob_Click" Content="Delete Job" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontSize="10" />
+                            <Button x:Name="CompleteJob" Click="CompleteJob_Click" Content="Complete Job" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontSize="10" />
                             <Button x:Name="AssignJob" Click="AssignJob_Click" Content="Assign Job" HorizontalAlignment="Stretch" VerticalAlignment="Top"  FontSize="10" />
                         
                         
@@ -109,9 +109,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 <TextBlock Text="List of stuff" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                 <ListBox  x:Name="ContractorListbox" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"/>
+                <DataGrid  x:Name="ContractorTable" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
+                <DataGrid  x:Name="JobTable" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
 
 
             </Grid>

@@ -24,64 +24,68 @@ namespace introprog_port2_contractor
     {
         ContractorService contractorService = new ContractorService();
         JobService JobService = new JobService();  
+        
         public MainWindow()
         {
             InitializeComponent();
-            
-           
+            ContractorAssigned.ItemsSource = contractorService.GetContractors().Where(c => c.IsAssigned == false).ToList();
+
 
         }
 
         private void GetContractor_Click(object sender, RoutedEventArgs e)
         {
 
-            ContractorListbox.ItemsSource = contractorService.GetContractors(); 
+            ContractorTable.ItemsSource = contractorService.GetContractors(); 
 
         }
 
         private void AddContractor_Click(object sender, RoutedEventArgs e)
         {
-
-            Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateTime.Parse(DateOfBirth.Text), int.Parse(HourlyWage.Text));
+            // forcing false as contractor to be created without being assigned to the pool
+            bool isAssigned = false;
+            Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateTime.Parse(DateOfBirth.Text), int.Parse(HourlyWage.Text), isAssigned);
 
             contractorService.AddContractor(newContractor);
-            ContractorListbox.ItemsSource = contractorService.GetContractors(); 
-
-
+            ContractorTable.ItemsSource = contractorService.GetContractors(); 
+           
         }
 
         private void RemoveContractor_Click(object sender, RoutedEventArgs e)
         {
-            Contractor oldContractor = (Contractor)ContractorListbox.SelectedItem;
+            Contractor oldContractor = (Contractor)ContractorTable.SelectedItem;
             contractorService.RemoveContractor(oldContractor);
-            ContractorListbox.ItemsSource = contractorService.GetContractors();
+            ContractorTable.ItemsSource = contractorService.GetContractors();
         }
 
-        private void ShowJobs_Click(object sender, RoutedEventArgs e)
-        {
-            ContractorListbox.ItemsSource = JobService.GetJobs();
-        }
 
         private void GetJobs_Click(object sender, RoutedEventArgs e)
         {
-            ContractorListbox.ItemsSource = JobService.GetJobs();
+            JobTable.ItemsSource = JobService.GetJobs();
 
         }
 
         private void CreateJob_Click(object sender, RoutedEventArgs e)
         {
             bool isCompleted = IsCompleted.IsChecked == true;
-            Contractor selectedContractor = (Contractor)ContractorListbox.SelectedItem ;
+            Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem ;
 
             Job newJob = new Job(JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), isCompleted , selectedContractor );
             JobService.CreateJob(newJob);
-            ContractorListbox.ItemsSource = JobService.GetJobs();
+            JobTable.ItemsSource = JobService.GetJobs();
+            JobTitle.Clear(); 
+            Cost.Clear();
+            //ContractorAssigned.SelectedIndex = -1 ;
+            IsCompleted.IsChecked = false;
+            JobDate.SelectedDate = null ;
+
             
         }
 
-        private void DeleteJob_Click(object sender, RoutedEventArgs e)
+        private void CompleteJob_Click(object sender, RoutedEventArgs e)
         {
-
+            Job oldJob = (Job)JobTable.SelectedItem ;
+            
         }
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
