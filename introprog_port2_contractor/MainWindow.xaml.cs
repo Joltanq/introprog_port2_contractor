@@ -60,5 +60,25 @@ namespace introprog_port2_contractor
         {
             ContractorListbox.ItemsSource = JobService.GetJobs();
         }
+
+        private void GetJobs_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateJob_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteJob_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AssignJob_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
