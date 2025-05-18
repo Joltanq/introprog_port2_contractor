@@ -35,7 +35,7 @@ namespace introprog_port2_contractor
         private void GetContractor_Click(object sender, RoutedEventArgs e)
         {
 
-            ContractorListbox.ItemsSource = contractorService.GetContractors();
+            ContractorListbox.ItemsSource = contractorService.GetContractors(); 
 
         }
 
@@ -63,6 +63,7 @@ namespace introprog_port2_contractor
 
         private void GetJobs_Click(object sender, RoutedEventArgs e)
         {
+            ContractorListbox.ItemsSource = JobService.GetJobs();
 
         }
 
@@ -72,6 +73,9 @@ namespace introprog_port2_contractor
             Contractor selectedContractor = (Contractor)ContractorListbox.SelectedItem ;
 
             Job newJob = new Job(JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), isCompleted , selectedContractor );
+            JobService.CreateJob(newJob);
+            ContractorListbox.ItemsSource = JobService.GetJobs();
+            
         }
 
         private void DeleteJob_Click(object sender, RoutedEventArgs e)
