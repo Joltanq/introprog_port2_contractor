@@ -68,7 +68,10 @@ namespace introprog_port2_contractor
 
         private void CreateJob_Click(object sender, RoutedEventArgs e)
         {
+            bool isCompleted = IsCompleted.IsChecked == true;
+            Contractor selectedContractor = (Contractor)ContractorListbox.SelectedItem ;
 
+            Job newJob = new Job(JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), isCompleted , selectedContractor );
         }
 
         private void DeleteJob_Click(object sender, RoutedEventArgs e)

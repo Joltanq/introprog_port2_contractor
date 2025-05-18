@@ -16,9 +16,9 @@ namespace introprog_port2_contractor.Services
             jobs.Add(new Job("Plumbing", new DateTime(2024,01,01), 100, true, null));
         }
 
-        public void CreateJob()
+        public void CreateJob(Job newJob)
         {
-    
+            jobs.Add(newJob);
         }
 
         public List<Job> GetJobs()
