@@ -51,7 +51,7 @@
                             <UniformGrid Grid.Row="5" Grid.Column="0" >
                             <Button x:Name="GetContractor"  Click="GetContractor_Click" Content="Get contractor"  HorizontalAlignment="Stretch"  FontSize="10" />
                             <Button x:Name="AddContractor" Click="AddContractor_Click" Content="Add contractor" HorizontalAlignment="Stretch" FontSize="10"  />
-                            <Button x:Name="RemoveContractor" Click="RemoveContractor_Click" Content="Remove contractor"  HorizontalAlignment="Stretch" FontSize="10" />
+
                             </UniformGrid>
                                                    
                         </Grid>
@@ -91,8 +91,7 @@
                         <UniformGrid Grid.Row="5" Grid.Column="0" >
                             <Button x:Name="GetJobs" Click="GetJobs_Click" Content="Get Job" HorizontalAlignment="Stretch"  FontSize="10" VerticalAlignment="Top"  />
                             <Button x:Name="CreateJob" Click="CreateJob_Click" Content="Create Job" HorizontalAlignment="Stretch" VerticalAlignment="Top"  FontSize="10" />
-                            <Button x:Name="CompleteJob" Click="CompleteJob_Click" Content="Complete Job" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontSize="10" />
-                            <Button x:Name="AssignJob" Click="AssignJob_Click" Content="Assign Job" HorizontalAlignment="Stretch" VerticalAlignment="Top"  FontSize="10" />
+              
                         
                         
                         </UniformGrid>
@@ -109,13 +108,19 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                <TextBlock Text="List of stuff" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                <DataGrid  x:Name="ContractorTable" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
-                <DataGrid  x:Name="JobTable" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
-
-
+                <TextBlock Text="List of Contractors" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                <Button x:Name="RemoveContractor" Click="RemoveContractor_Click" Grid.Row="0" Content="Remove contractor"  HorizontalAlignment="Right" FontSize="10" />
+                <DataGrid  x:Name="ContractorTable"  Grid.Row="1" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
+                
+                <TextBlock Text="List of Jobs" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                <DataGrid  x:Name="JobTable"  Grid.Row="3" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
+                <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button x:Name="CompleteJob" Click="CompleteJob_Click" Grid.Row="2"  Content="Complete Job"  FontSize="10" />
+                    <Button x:Name="AssignJob" Click="AssignJob_Click" Grid.Row="2" Content="Assign Job"   FontSize="10" />
+                </StackPanel>
             </Grid>
 
         </Border>
