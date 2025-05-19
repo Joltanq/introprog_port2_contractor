@@ -100,5 +100,17 @@ namespace introprog_port2_contractor
 
 
         }
+
+        public string ContractorsDisplay
+        {
+            get
+            {
+                if (ContractorsAssigned == null || ContractorsAssigned.Count == 0)
+                    return "None";
+
+                return string.Join(", ", ContractorsAssigned.Select(c => $"{c.FirstName} {c.LastName}"));
+            }
+        }
+
     }
 }
