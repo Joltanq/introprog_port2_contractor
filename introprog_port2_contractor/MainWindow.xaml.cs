@@ -132,5 +132,10 @@ namespace introprog_port2_contractor
         {
             JobTable.ItemsSource = JobService.GetJobs().Where(j => j.Completed == false).ToList();
         }
+
+        private void Button_CostSearch_Click(object sender, RoutedEventArgs e)
+        {
+            JobReporting.ItemsSource = JobService.GetJobs().Where(j => j.Cost >= int.Parse(MinCostSearch.Text) && j.Cost <= int.Parse(MaxCostSearch.Text)).ToList();
+        }
     }
 }

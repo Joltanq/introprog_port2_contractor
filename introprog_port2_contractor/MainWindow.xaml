@@ -6,6 +6,9 @@
             xmlns:local="clr-namespace:introprog_port2_contractor"
             mc:Ignorable="d"
             Title="MainWindow" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Management">
+            
 
         <Grid>
             <!-- Lays out the frame-->
@@ -89,13 +92,7 @@
                             <Button x:Name="GetJobs" Click="GetJobs_Click" Content="Get Job" HorizontalAlignment="Stretch"  FontSize="10" VerticalAlignment="Top"  />
                             <Button x:Name="CreateJob" Click="CreateJob_Click" Content="Create Job" HorizontalAlignment="Stretch" VerticalAlignment="Top"  FontSize="10" />
                             <Button x:Name="ShowOpenJobs" Click="ShowOpenJobs_Click" Content="Show Open Jobs" HorizontalAlignment="Stretch"  VerticalAlignment="Top"  FontSize="10" />
-              
-                        
-                        
                         </UniformGrid>
-
-
-
                     </Grid>
                 </Border>
         </Grid>
@@ -109,18 +106,12 @@
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                <TextBlock Text="List of Contractors" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                <Button x:Name="RemoveContractor" Click="RemoveContractor_Click" Grid.Row="0" Content="Remove contractor"  HorizontalAlignment="Right" FontSize="10"  />
-                <DataGrid  x:Name="ContractorTable"  Grid.Row="1" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
-                
-                <TextBlock Text="List of Jobs" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                <DataGrid  x:Name="JobTable"  Grid.Row="3" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible">
-                    
-
-                </DataGrid>
-                   
-
-                        <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock Text="List of Contractors" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                    <Button x:Name="RemoveContractor" Click="RemoveContractor_Click" Grid.Row="0" Content="Remove contractor"  HorizontalAlignment="Right" FontSize="10"  />
+                    <DataGrid  x:Name="ContractorTable"  Grid.Row="1" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
+                    <TextBlock Text="List of Jobs" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                    <DataGrid  x:Name="JobTable"  Grid.Row="3" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
                     <ComboBox x:Name="ContractorAssigned" DisplayMemberPath="FirstName" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue" Width="100"/>
                     <Button x:Name="CompleteJob" Click="CompleteJob_Click" Grid.Row="2"  Content="Complete Job"  FontSize="10" />
                     <Button x:Name="AssignJob" Click="AssignJob_Click" Grid.Row="2" Content="Assign Job"   FontSize="10" />
@@ -132,5 +123,25 @@
 
 
         </Grid>
-
+        </TabItem>
+        <TabItem Header="Reporting">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Min Cost" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                <TextBlock Text="Max Cost" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                <TextBox x:Name="MinCostSearch" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="200" Height="20" Margin="10"/>
+                <TextBox x:Name="MaxCostSearch" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="200" Height="20" Margin="10"/>
+                <Button x:Name="Button_CostSearch" Click="Button_CostSearch_Click" Content="Search" Width="200" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Grid.RowSpan="2"/>
+                <DataGrid  x:Name="JobReporting"  Grid.Row="2" Grid.ColumnSpan="2" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
     </Window>
