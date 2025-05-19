@@ -117,6 +117,7 @@
                 
                 <TextBlock Text="List of Jobs" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
                 <DataGrid  x:Name="JobTable"  Grid.Row="3" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
+
                 <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
                     <Button x:Name="CompleteJob" Click="CompleteJob_Click" Grid.Row="2"  Content="Complete Job"  FontSize="10" />
                     <Button x:Name="AssignJob" Click="AssignJob_Click" Grid.Row="2" Content="Assign Job"   FontSize="10" />
