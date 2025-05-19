@@ -97,8 +97,15 @@ namespace introprog_port2_contractor
             selectedJob.JobDate = selectedJob.JobDate ;
             selectedJob.Completed = selectedJob.Completed;
             selectedJob.ContractorsAssigned = selectedContractor;
-            //JobService.AssignJob(selectedJob, selectedContractor);
+            selectedContractor.IsAssigned = true;  
             JobTable.ItemsSource = JobService.GetJobs();
+            ContractorTable.ItemsSource = contractorService.GetContractors();
+            //ContractorAssigned.SelectedIndex = -1 ;
+
+            ContractorAssigned.ItemsSource = contractorService
+                .GetContractors()
+                .Where(c => c.IsAssigned == false)
+                .ToList(); // Ref
 
 
         }

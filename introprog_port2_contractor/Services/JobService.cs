@@ -26,17 +26,6 @@ namespace introprog_port2_contractor.Services
             return jobs.ToList();  
         }
 
-        public void AssignJob(Job SelectedJob,Contractor ContractorAssigned)
-        {
-            
-            //jobs.Add(new Job(0, "Plumbing", new DateTime(2024, 01, 01), 100, false, ContractorAssigned));
-            //var existingJob = jobs.FirstOrDefault(j => j.Id == SelectedJob.Id);
-            //existingJob.Title = SelectedJob.Title;
-            //existingJob.Cost = SelectedJob.Cost;   
-            //existingJob.ContractorAssigned = ContractorAssigned;
-            //existingJob.Completed = SelectedJob.Completed;
-      
-        }
 
         public void CompleteJob()
         {
