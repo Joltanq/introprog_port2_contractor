@@ -34,7 +34,7 @@ namespace introprog_port2_contractor.Services
             //existingJob.Cost = SelectedJob.Cost;   
             //existingJob.ContractorAssigned = ContractorAssigned;
             //existingJob.Completed = SelectedJob.Completed;
-            SelectedJob.ContractorsAssigned.Add(ContractorAssigned);
+      
         }
 
         public void CompleteJob()

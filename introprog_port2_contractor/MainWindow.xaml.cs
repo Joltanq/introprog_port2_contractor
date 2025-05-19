@@ -69,11 +69,8 @@ namespace introprog_port2_contractor
         {
             bool isCompleted = IsCompleted.IsChecked == true;
             Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem ;
-            List<Contractor> contractors = new List<Contractor>(); 
-            if (selectedContractor != null)
-                contractors.Add(selectedContractor);
-           
-            Job newJob = new Job(0, JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), isCompleted , contractors );
+
+            Job newJob = new Job(0, JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), isCompleted , selectedContractor );
             JobService.CreateJob(newJob);
             JobTable.ItemsSource = JobService.GetJobs();
             JobTitle.Clear(); 
@@ -101,16 +98,7 @@ namespace introprog_port2_contractor
 
         }
 
-        public string ContractorsDisplay
-        {
-            get
-            {
-                if (ContractorsAssigned == null || ContractorsAssigned.Count == 0)
-                    return "None";
 
-                return string.Join(", ", ContractorsAssigned.Select(c => $"{c.FirstName} {c.LastName}"));
-            }
-        }
 
     }
 }
