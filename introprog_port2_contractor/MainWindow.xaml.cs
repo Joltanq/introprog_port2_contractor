@@ -28,7 +28,8 @@ namespace introprog_port2_contractor
         public MainWindow()
         {
             InitializeComponent();
-            ContractorAssigned.ItemsSource = contractorService.GetContractors().Where(c => c.IsAssigned == false).ToList();
+            LoadUnassignedContractors();   
+
 
 
         }
@@ -36,7 +37,8 @@ namespace introprog_port2_contractor
         private void GetContractor_Click(object sender, RoutedEventArgs e)
         {
 
-            ContractorTable.ItemsSource = contractorService.GetContractors(); 
+            ContractorTable.ItemsSource = contractorService.GetContractors();
+
 
         }
 
@@ -47,8 +49,8 @@ namespace introprog_port2_contractor
             Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateTime.Parse(DateOfBirth.Text), int.Parse(HourlyWage.Text), isAssigned);
 
             contractorService.AddContractor(newContractor);
-            ContractorTable.ItemsSource = contractorService.GetContractors(); 
-           
+            ContractorTable.ItemsSource = contractorService.GetContractors();
+
         }
 
         private void RemoveContractor_Click(object sender, RoutedEventArgs e)
@@ -75,7 +77,6 @@ namespace introprog_port2_contractor
             JobTable.ItemsSource = JobService.GetJobs();
             JobTitle.Clear(); 
             Cost.Clear();
-            //ContractorAssigned.SelectedIndex = -1 ;
             IsCompleted.IsChecked = false;
             JobDate.SelectedDate = null ;
 
@@ -84,8 +85,18 @@ namespace introprog_port2_contractor
 
         private void CompleteJob_Click(object sender, RoutedEventArgs e)
         {
-            Job oldJob = (Job)JobTable.SelectedItem ;
-            
+            Job completedJob = (Job)JobTable.SelectedItem ;
+            Contractor oldContractor = (Contractor)completedJob.ContractorAssigned;
+            completedJob.Title = completedJob.Title;
+            completedJob.Cost = completedJob.Cost;
+            completedJob.JobDate = completedJob.JobDate;
+            completedJob.Completed = true;
+            completedJob.ContractorAssigned.IsAssigned = false;
+            completedJob.ContractorAssigned = null;
+
+            RefreshTables();
+            LoadUnassignedContractors();
+
         }
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
@@ -96,21 +107,25 @@ namespace introprog_port2_contractor
             selectedJob.Cost = selectedJob.Cost;
             selectedJob.JobDate = selectedJob.JobDate ;
             selectedJob.Completed = selectedJob.Completed;
-            selectedJob.ContractorsAssigned = selectedContractor;
+            selectedJob.ContractorAssigned = selectedContractor;
             selectedContractor.IsAssigned = true;  
-            JobTable.ItemsSource = JobService.GetJobs();
-            ContractorTable.ItemsSource = contractorService.GetContractors();
-            //ContractorAssigned.SelectedIndex = -1 ;
-
-            ContractorAssigned.ItemsSource = contractorService
-                .GetContractors()
-                .Where(c => c.IsAssigned == false)
-                .ToList(); // Ref
-
+            RefreshTables();    
+            LoadUnassignedContractors();   
 
         }
 
+        public void LoadUnassignedContractors()
+        {
 
+            ContractorAssigned.ItemsSource = contractorService.GetContractors().Where(c => c.IsAssigned == false).ToList();
+        }
+
+        public void RefreshTables()
+        {
+            JobTable.ItemsSource = JobService.GetJobs();
+            ContractorTable.ItemsSource = contractorService.GetContractors();
+
+        }
 
     }
 }

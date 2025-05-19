@@ -17,7 +17,7 @@ namespace introprog_port2_contractor.Models
         public DateTime JobDate { get; set; }
         public int Cost { get; set; }
         public bool Completed { get; set; }
-        public Contractor ContractorsAssigned { get; set; }
+        public Contractor ContractorAssigned { get; set; }
 
    
 
@@ -28,13 +28,13 @@ namespace introprog_port2_contractor.Models
             JobDate = jobDate;
             Cost = cost;
             Completed = completed;
-            ContractorsAssigned = contractorAssigned;
+            ContractorAssigned = contractorAssigned;
         }
 
 
         public override string ToString()
         {
-            return $"{Title} {JobDate} {Cost} {Completed} {ContractorsAssigned}";
+            return $"{Title} {JobDate} {Cost} {Completed} {ContractorAssigned}";
         }
 
 
