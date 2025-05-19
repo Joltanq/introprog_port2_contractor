@@ -17,22 +17,22 @@ namespace introprog_port2_contractor.Models
         public DateTime JobDate { get; set; }
         public int Cost { get; set; }
         public bool Completed { get; set; }
-        public Contractor ContractorAssigned { get; set; }
+        public List<Contractor> ContractorsAssigned { get; set; }
 
-        public Job(int id, string title, DateTime jobDate, int cost, bool completed, Contractor contractorAssigned)
+        public Job(int id, string title, DateTime jobDate, int cost, bool completed, List<Contractor> contractorAssigned)
         {
             Id = id;
             Title = title;
             JobDate = jobDate;
             Cost = cost;
             Completed = completed;
-            ContractorAssigned = contractorAssigned;
+            ContractorsAssigned = contractorAssigned ?? new List<Contractor>();
         }
 
 
         public override string ToString()
         {
-            return $"{Title} {JobDate} {Cost} {Completed} {ContractorAssigned}";
+            return $"{Title} {JobDate} {Cost} {Completed} {ContractorsAssigned}";
         }
 
 

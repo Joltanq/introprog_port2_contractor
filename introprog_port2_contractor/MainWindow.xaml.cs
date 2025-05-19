@@ -68,9 +68,12 @@ namespace introprog_port2_contractor
         private void CreateJob_Click(object sender, RoutedEventArgs e)
         {
             bool isCompleted = IsCompleted.IsChecked == true;
-            //Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem ;
-
-            Job newJob = new Job(0, JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), isCompleted , null );
+            Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem ;
+            List<Contractor> contractors = new List<Contractor>(); 
+            if (selectedContractor != null)
+                contractors.Add(selectedContractor);
+           
+            Job newJob = new Job(0, JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), isCompleted , contractors );
             JobService.CreateJob(newJob);
             JobTable.ItemsSource = JobService.GetJobs();
             JobTitle.Clear(); 
@@ -91,7 +94,9 @@ namespace introprog_port2_contractor
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {
             Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem;
-            JobService.AssignJob((Job)JobTable.SelectedItem, selectedContractor);
+            Job selectedJob = (Job)JobTable.SelectedItem ;  
+            JobService.AssignJob(selectedJob, selectedContractor);
+            JobTable.ItemsSource = JobService.GetJobs();
 
 
         }
