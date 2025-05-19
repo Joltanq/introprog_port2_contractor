@@ -92,7 +92,12 @@ namespace introprog_port2_contractor
         {
             Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem;
             Job selectedJob = (Job)JobTable.SelectedItem ;  
-            JobService.AssignJob(selectedJob, selectedContractor);
+            selectedJob.Title = selectedJob.Title;
+            selectedJob.Cost = selectedJob.Cost;
+            selectedJob.JobDate = selectedJob.JobDate ;
+            selectedJob.Completed = selectedJob.Completed;
+            selectedJob.ContractorsAssigned = selectedContractor;
+            //JobService.AssignJob(selectedJob, selectedContractor);
             JobTable.ItemsSource = JobService.GetJobs();
 
 
