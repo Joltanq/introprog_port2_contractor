@@ -46,11 +46,20 @@ namespace introprog_port2_contractor
         {
             // forcing false as contractor to be created without being assigned to the pool
             bool isAssigned = false;
-            Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateTime.Parse(DateOfBirth.Text), int.Parse(HourlyWage.Text), isAssigned);
+            decimal hourlywage;
+            DateTime dateofbirth;
 
-            contractorService.AddContractor(newContractor);
-            ContractorTable.ItemsSource = contractorService.GetContractors();
 
+            if (string.IsNullOrEmpty(FirstName.Text) && string.IsNullOrEmpty(LastName.Text)  && decimal.TryParse(HourlyWage.Text, out hourlywage) && DateTime.TryParse(DateOfBirth.Text, out dateofbirth))
+            {
+                Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, dateofbirth, hourlywage, isAssigned);
+                contractorService.AddContractor(newContractor);
+                ContractorTable.ItemsSource = contractorService.GetContractors();
+            }
+            else
+            {
+                MessageBox.Show($"There's something wrong with the inputs. Please check that" + "\n - First or Last Name are not empty" + "\n - Date of Birth is a valid date" +"\n - Hourly Wage is a number");
+            }
         }
 
         private void RemoveContractor_Click(object sender, RoutedEventArgs e)

@@ -12,11 +12,11 @@ namespace introprog_port2_contractor.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public int HourlyWage { get; set; }
+        public decimal HourlyWage { get; set; }
         public bool IsAssigned { get; set; }
 
 
-        public Contractor(string firstName, string lastName, DateTime DateOfBirth, int hourlyWage, bool isAssigned)
+        public Contractor(string firstName, string lastName, DateTime DateOfBirth, decimal hourlyWage, bool isAssigned)
         {
             
             FirstName = firstName;

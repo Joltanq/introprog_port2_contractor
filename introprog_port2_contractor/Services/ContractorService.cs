@@ -36,6 +36,7 @@ namespace introprog_port2_contractor.Services
             contractors.Remove(oldContractor);  
         }
 
+        // might not need this
         public Contractor Search(int id)
         {
             for (int i = 0; i < contractors.Count; i++)
