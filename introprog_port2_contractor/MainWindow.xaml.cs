@@ -187,7 +187,19 @@ namespace introprog_port2_contractor
 
         private void Button_CostSearch_Click(object sender, RoutedEventArgs e)
         {
-            JobReporting.ItemsSource = JobService.GetJobs().Where(j => j.Cost >= int.Parse(MinCostSearch.Text) && j.Cost <= int.Parse(MaxCostSearch.Text)).ToList();
+            decimal mincost;
+            decimal maxcost;
+            
+            if (decimal.TryParse(MinCostSearch.Text, out mincost) && decimal.TryParse(MaxCostSearch.Text, out maxcost))
+                {
+            JobReporting.ItemsSource = JobService.GetJobs().Where(j => j.Cost >= mincost && j.Cost <= maxcost).ToList();
+
+            }
+            else
+            {
+                MessageBox.Show("Min and max cost should be a number");
+            }
+            
         }
     }
 }
