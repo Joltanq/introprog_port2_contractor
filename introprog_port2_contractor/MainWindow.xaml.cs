@@ -58,6 +58,12 @@ namespace introprog_port2_contractor
                 contractorService.AddContractor(newContractor);
                 ContractorTable.ItemsSource = contractorService.GetContractors();
                 LoadUnassignedContractors();
+
+                FirstName.Clear();
+                LastName.Clear();
+                DateOfBirth.SelectedDate = null;
+                HourlyWage.Clear();
+
             }
             else
             {
