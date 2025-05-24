@@ -99,22 +99,24 @@ namespace introprog_port2_contractor
 
         private void CompleteJob_Click(object sender, RoutedEventArgs e)
         {
+            Job jobtobeClosed = (Job)JobTable.SelectedItem;
 
-
-
-            Job completedJob = (Job)JobTable.SelectedItem ;
-            Contractor oldContractor = (Contractor)completedJob.ContractorAssigned;
-            completedJob.Title = completedJob.Title;
-            completedJob.Cost = completedJob.Cost;
-            completedJob.JobDate = completedJob.JobDate;
-            completedJob.Completed = true;
-//need to validate if it can be shut
-            completedJob.ContractorAssigned.IsAssigned = false;
-            completedJob.ContractorAssigned = null;
-
+            if (jobtobeClosed.Completed == false)
+            {
+            //Contractor contractortobeUnassigned = (Contractor)jobtobeClosed.ContractorAssigned;
+            jobtobeClosed.Title = jobtobeClosed.Title;
+            jobtobeClosed.Cost = jobtobeClosed.Cost;
+            jobtobeClosed.JobDate = jobtobeClosed.JobDate;
+            jobtobeClosed.Completed = true;
+            jobtobeClosed.ContractorAssigned.IsAssigned = false;
+            jobtobeClosed.ContractorAssigned = null;
             RefreshTables();
             LoadUnassignedContractors();
-
+            }
+            else
+            {
+                MessageBox.Show("Job is already complete and cannot be closed");
+            }
         }
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
