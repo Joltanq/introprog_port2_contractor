@@ -27,30 +27,42 @@ namespace introprog_port2_contractor
         
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();     
+            // loading here becuase i've pre-created them
             LoadUnassignedContractors();   
-
-
 
         }
 
         private void GetContractor_Click(object sender, RoutedEventArgs e)
         {
-
-            ContractorTable.ItemsSource = contractorService.GetContractors();
-
-
+            if (contractorService.GetContractors().Count > 0  )
+            {
+                ContractorTable.ItemsSource = contractorService.GetContractors();
+            }
+            else
+            {
+                MessageBox.Show("There are no contractors in the system. Create one to continue");
+            }
         }
 
         private void AddContractor_Click(object sender, RoutedEventArgs e)
         {
             // forcing false as contractor to be created without being assigned to the pool
-            bool isAssigned = false;
-            Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, DateTime.Parse(DateOfBirth.Text), int.Parse(HourlyWage.Text), isAssigned);
+            decimal hourlywage;
+            DateTime dateofbirth;
 
-            contractorService.AddContractor(newContractor);
-            ContractorTable.ItemsSource = contractorService.GetContractors();
 
+            if (!string.IsNullOrEmpty(FirstName.Text) && !string.IsNullOrEmpty(LastName.Text)  && decimal.TryParse(HourlyWage.Text, out hourlywage) && DateTime.TryParse(DateOfBirth.Text, out dateofbirth))
+            {
+                Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, dateofbirth, hourlywage, false);
+                contractorService.AddContractor(newContractor);
+                ContractorTable.ItemsSource = contractorService.GetContractors();
+                LoadUnassignedContractors();
+            }
+            else
+            {
+                MessageBox.Show($"There's something wrong with the inputs. Please check that" + "\n - First or Last Name are not empty" + "\n - Date of Birth is a valid date" +"\n - Hourly Wage is a number");
+            }
         }
 
         private void RemoveContractor_Click(object sender, RoutedEventArgs e)
@@ -63,62 +75,102 @@ namespace introprog_port2_contractor
 
         private void GetJobs_Click(object sender, RoutedEventArgs e)
         {
-            JobTable.ItemsSource = JobService.GetJobs();
+            if (JobService.GetJobs().Count > 0) {
+                JobTable.ItemsSource = JobService.GetJobs();
 
+            }
+            else
+            {
+                MessageBox.Show("There are no jobs yet. Create one to continue");
+            }
         }
 
         private void CreateJob_Click(object sender, RoutedEventArgs e)
         {
-            //bool isCompleted = IsCompleted.IsChecked == true;
-            Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem ;
-            //need to validate if fields are correct
-            Job newJob = new Job(0, JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), false , null );
+
+            decimal cost;
+            DateTime jobdate;
+
+            if (!string.IsNullOrEmpty(JobTitle.Text)  && decimal.TryParse(Cost.Text, out cost) && DateTime.TryParse(JobDate.Text, out jobdate))
+            {
+            Job newJob = new Job(JobTitle.Text, jobdate, cost, false , null );
             JobService.CreateJob(newJob);
             JobTable.ItemsSource = JobService.GetJobs();
             JobTitle.Clear(); 
             Cost.Clear();
-            //IsCompleted.IsChecked = false;
             JobDate.SelectedDate = null ;
 
-            
+            }
+            else
+            {
+                MessageBox.Show($"There's something wrong with the inputs. Please check that" + "\n - Job has a title" + "\n - Job date is a valid date" + "\n - Cost is a number");
+            }            
         }
 
         private void CompleteJob_Click(object sender, RoutedEventArgs e)
         {
-            Job completedJob = (Job)JobTable.SelectedItem ;
-            Contractor oldContractor = (Contractor)completedJob.ContractorAssigned;
-            completedJob.Title = completedJob.Title;
-            completedJob.Cost = completedJob.Cost;
-            completedJob.JobDate = completedJob.JobDate;
-            completedJob.Completed = true;
-//need to validate if it can be shut
-            completedJob.ContractorAssigned.IsAssigned = false;
-            completedJob.ContractorAssigned = null;
+            Job jobtobeClosed = (Job)JobTable.SelectedItem;
 
+            if (jobtobeClosed.Completed == false && jobtobeClosed.ContractorAssigned != null)
+            {
+            //Contractor contractortobeUnassigned = (Contractor)jobtobeClosed.ContractorAssigned;
+            jobtobeClosed.Title = jobtobeClosed.Title;
+            jobtobeClosed.Cost = jobtobeClosed.Cost;
+            jobtobeClosed.JobDate = jobtobeClosed.JobDate;
+            jobtobeClosed.Completed = true;
+            jobtobeClosed.ContractorAssigned.IsAssigned = false;
+            jobtobeClosed.ContractorAssigned = null;
             RefreshTables();
             LoadUnassignedContractors();
-
+            }
+            else
+            {
+                MessageBox.Show("Job is already complete and cannot be closed or there is no contractor assigned");
+            }
         }
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {
-            Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem;
-            Job selectedJob = (Job)JobTable.SelectedItem ;  
-            selectedJob.Title = selectedJob.Title;
-            selectedJob.Cost = selectedJob.Cost;
-            selectedJob.JobDate = selectedJob.JobDate ;
-            selectedJob.Completed = selectedJob.Completed;
-            selectedJob.ContractorAssigned = selectedContractor;
-            selectedContractor.IsAssigned = true;  
-            RefreshTables();    
-            LoadUnassignedContractors();   
+            Job selectedJob = (Job)JobTable.SelectedItem;
+
+            if (selectedJob != null)
+            {
+                Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem;
+                //Job selectedJob = (Job)JobTable.SelectedItem;
+                selectedJob.Title = selectedJob.Title;
+                selectedJob.Cost = selectedJob.Cost;
+                selectedJob.JobDate = selectedJob.JobDate;
+                selectedJob.Completed = selectedJob.Completed;
+                selectedJob.ContractorAssigned = selectedContractor;
+                selectedContractor.IsAssigned = true;
+                RefreshTables();
+                LoadUnassignedContractors();
+            }
+            else
+            {
+                MessageBox.Show("Please select a job");
+            }
+
+      
 
         }
 
         public void LoadUnassignedContractors()
         {
 
-            ContractorAssigned.ItemsSource = contractorService.GetContractors().Where(c => c.IsAssigned == false).ToList();
+            List<Contractor> unassignedContractors = contractorService.GetContractors().Where(c => c.IsAssigned == false).ToList();
+            List<Contractor> noavailableContractors = new List<Contractor>();
+            noavailableContractors.Add(new Contractor("<No available contractors>"));
+
+            if (unassignedContractors.Count == 0)
+            {
+                ContractorAssigned.ItemsSource = noavailableContractors;
+
+            }
+            else
+            {
+                ContractorAssigned.ItemsSource = unassignedContractors;
+            }
         }
 
         public void RefreshTables()
