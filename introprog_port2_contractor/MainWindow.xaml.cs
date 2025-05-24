@@ -27,19 +27,22 @@ namespace introprog_port2_contractor
         
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();     
+            // loading here becuase i've pre-created them
             LoadUnassignedContractors();   
-
-
 
         }
 
         private void GetContractor_Click(object sender, RoutedEventArgs e)
         {
-
-            ContractorTable.ItemsSource = contractorService.GetContractors();
-
-
+            if (contractorService.GetContractors().Count > 0  )
+            {
+                ContractorTable.ItemsSource = contractorService.GetContractors();
+            }
+            else
+            {
+                MessageBox.Show("There are no contractors in the system. Create one to continue");
+            }
         }
 
         private void AddContractor_Click(object sender, RoutedEventArgs e)
@@ -71,8 +74,14 @@ namespace introprog_port2_contractor
 
         private void GetJobs_Click(object sender, RoutedEventArgs e)
         {
-            JobTable.ItemsSource = JobService.GetJobs();
+            if (JobService.GetJobs().Count > 0) {
+                JobTable.ItemsSource = JobService.GetJobs();
 
+            }
+            else
+            {
+                MessageBox.Show("There are no jobs yet. Create one to continue");
+            }
         }
 
         private void CreateJob_Click(object sender, RoutedEventArgs e)
@@ -103,6 +112,7 @@ namespace introprog_port2_contractor
 
             if (jobtobeClosed.Completed == false)
             {
+            //Contractor contractortobeUnassigned = (Contractor)jobtobeClosed.ContractorAssigned;
             jobtobeClosed.Title = jobtobeClosed.Title;
             jobtobeClosed.Cost = jobtobeClosed.Cost;
             jobtobeClosed.JobDate = jobtobeClosed.JobDate;

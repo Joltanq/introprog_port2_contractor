@@ -27,10 +27,6 @@ namespace introprog_port2_contractor.Services
         }
 
 
-        public void CompleteJob()
-        {
-            //needs to return contractor to pool. call remove contractor
-        }
     }
 }
     
