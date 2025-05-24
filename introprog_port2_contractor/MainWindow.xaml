@@ -112,7 +112,7 @@
                     <TextBlock Text="List of Jobs" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
                     <DataGrid  x:Name="JobTable"  Grid.Row="3" Grid.RowSpan="3" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
                     <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <ComboBox x:Name="ContractorAssigned" DisplayMemberPath="FirstName" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue" Width="100" SelectedIndex="0"/>
+                    <ComboBox x:Name="ContractorAssigned" DisplayMemberPath="FirstName" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue" Width="100"/>
                     <Button x:Name="CompleteJob" Click="CompleteJob_Click" Grid.Row="2"  Content="Complete Job"  FontSize="10" />
                     <Button x:Name="AssignJob" Click="AssignJob_Click" Grid.Row="2" Content="Assign Job"   FontSize="10" />
                 </StackPanel>
@@ -124,6 +124,7 @@
 
         </Grid>
         </TabItem>
+        <!-- Reporting panel -->
         <TabItem Header="Reporting">
             <Grid>
                 <Grid.RowDefinitions>
@@ -143,5 +144,7 @@
                 <DataGrid  x:Name="JobReporting"  Grid.Row="2" Grid.ColumnSpan="2" AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
             </Grid>
         </TabItem>
+        
+    <!-- Reporting panel end-->
     </TabControl>
     </Window>
