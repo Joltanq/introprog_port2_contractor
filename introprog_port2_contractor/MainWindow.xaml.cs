@@ -45,14 +45,13 @@ namespace introprog_port2_contractor
         private void AddContractor_Click(object sender, RoutedEventArgs e)
         {
             // forcing false as contractor to be created without being assigned to the pool
-            bool isAssigned = false;
             decimal hourlywage;
             DateTime dateofbirth;
 
 
-            if (string.IsNullOrEmpty(FirstName.Text) && string.IsNullOrEmpty(LastName.Text)  && decimal.TryParse(HourlyWage.Text, out hourlywage) && DateTime.TryParse(DateOfBirth.Text, out dateofbirth))
+            if (!string.IsNullOrEmpty(FirstName.Text) && !string.IsNullOrEmpty(LastName.Text)  && decimal.TryParse(HourlyWage.Text, out hourlywage) && DateTime.TryParse(DateOfBirth.Text, out dateofbirth))
             {
-                Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, dateofbirth, hourlywage, isAssigned);
+                Contractor newContractor = new Contractor(FirstName.Text, LastName.Text, dateofbirth, hourlywage, false);
                 contractorService.AddContractor(newContractor);
                 ContractorTable.ItemsSource = contractorService.GetContractors();
             }
@@ -78,22 +77,31 @@ namespace introprog_port2_contractor
 
         private void CreateJob_Click(object sender, RoutedEventArgs e)
         {
-            //bool isCompleted = IsCompleted.IsChecked == true;
-            Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem ;
-            //need to validate if fields are correct
-            Job newJob = new Job(0, JobTitle.Text, DateTime.Parse(JobDate.Text), int.Parse(Cost.Text), false , null );
+
+            decimal cost;
+            DateTime jobdate;
+
+            if (!string.IsNullOrEmpty(JobTitle.Text)  && decimal.TryParse(Cost.Text, out cost) && DateTime.TryParse(JobDate.Text, out jobdate))
+            {
+            Job newJob = new Job(JobTitle.Text, jobdate, cost, false , null );
             JobService.CreateJob(newJob);
             JobTable.ItemsSource = JobService.GetJobs();
             JobTitle.Clear(); 
             Cost.Clear();
-            //IsCompleted.IsChecked = false;
             JobDate.SelectedDate = null ;
 
-            
+            }
+            else
+            {
+                MessageBox.Show($"There's something wrong with the inputs. Please check that" + "\n - Job has a title" + "\n - Job date is a valid date" + "\n - Cost is a number");
+            }            
         }
 
         private void CompleteJob_Click(object sender, RoutedEventArgs e)
         {
+
+
+
             Job completedJob = (Job)JobTable.SelectedItem ;
             Contractor oldContractor = (Contractor)completedJob.ContractorAssigned;
             completedJob.Title = completedJob.Title;
