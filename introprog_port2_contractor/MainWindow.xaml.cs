@@ -103,7 +103,6 @@ namespace introprog_port2_contractor
 
             if (jobtobeClosed.Completed == false)
             {
-            //Contractor contractortobeUnassigned = (Contractor)jobtobeClosed.ContractorAssigned;
             jobtobeClosed.Title = jobtobeClosed.Title;
             jobtobeClosed.Cost = jobtobeClosed.Cost;
             jobtobeClosed.JobDate = jobtobeClosed.JobDate;
