@@ -28,7 +28,7 @@
                     <Border Grid.Column="0" BorderBrush="Black" BorderThickness="2" Margin="5">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -41,15 +41,16 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                     
+                            <Rectangle Fill="Tan" Grid.ColumnSpan="2"/>
                             <TextBlock Text="Contractor" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
                             <TextBlock Text="First Name" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                            <TextBox x:Name="FirstName" Grid.Column="1" Grid.Row="1" BorderBrush="DarkBlue"/>
+                            <TextBox x:Name="FirstName" Grid.Column="1" Grid.Row="1" BorderBrush="Black"/>
                             <TextBlock Text="Last Name" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                            <TextBox x:Name="LastName" Grid.Column="1" Grid.Row="2" BorderBrush="DarkBlue"/>
+                            <TextBox x:Name="LastName" Grid.Column="1" Grid.Row="2" BorderBrush="Black"/>
                             <TextBlock Text="Date of Birth" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                            <DatePicker x:Name="DateOfBirth" Grid.Column="1" Grid.Row="3" BorderBrush="DarkBlue"/>
+                            <DatePicker x:Name="DateOfBirth" Grid.Column="1" Grid.Row="3" BorderBrush="Black"/>
                             <TextBlock Text="Hourly Wage" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                            <TextBox x:Name="HourlyWage" Grid.Column="1" Grid.Row="4" BorderBrush="DarkBlue"/>
+                            <TextBox x:Name="HourlyWage" Grid.Column="1" Grid.Row="4" BorderBrush="Black"/>
 
                             <UniformGrid Grid.Row="5" Grid.Column="0" >
                             <Button x:Name="GetContractor"  Click="GetContractor_Click" Content="Get contractor"  HorizontalAlignment="Stretch"  FontSize="10" />
@@ -64,7 +65,7 @@
                 <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2" Margin="5">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="*"/> 
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -77,21 +78,21 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-
-                        <TextBlock Text="Jobs"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" />
+                            <Rectangle Fill="Tan" Grid.ColumnSpan="2"/>
+                            <TextBlock Text="Jobs"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" />
                         <TextBlock Text="Title" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                        <TextBox x:Name="JobTitle" Grid.Column="1" Grid.Row="1" BorderBrush="DarkBlue"/>
+                        <TextBox x:Name="JobTitle" Grid.Column="1" Grid.Row="1" BorderBrush="Black"/>
                         <TextBlock Text="Cost" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                        <TextBox x:Name="Cost" Grid.Column="1" Grid.Row="2" BorderBrush="DarkBlue"/>
+                            <TextBox x:Name="Cost" Grid.Column="1" Grid.Row="2" BorderBrush="Black"/>
 
                         <TextBlock Text="Job Date" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                        <DatePicker x:Name="JobDate" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center"  BorderBrush="DarkBlue"/>
+                            <DatePicker x:Name="JobDate" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch"   BorderBrush="Black"/>
 
 
                         <UniformGrid Grid.Row="5" Grid.Column="0" >
-                            <Button x:Name="GetJobs" Click="GetJobs_Click" Content="Get Job" HorizontalAlignment="Stretch"  FontSize="10" VerticalAlignment="Top"  />
-                            <Button x:Name="CreateJob" Click="CreateJob_Click" Content="Create Job" HorizontalAlignment="Stretch" VerticalAlignment="Top"  FontSize="10" />
-                            <Button x:Name="ShowOpenJobs" Click="ShowOpenJobs_Click" Content="Show Open Jobs" HorizontalAlignment="Stretch"  VerticalAlignment="Top"  FontSize="10" />
+                            <Button x:Name="GetJobs" Click="GetJobs_Click" Content="Get Job" HorizontalAlignment="Stretch"  FontSize="10"   />
+                            <Button x:Name="CreateJob" Click="CreateJob_Click" Content="Create Job" HorizontalAlignment="Stretch"   FontSize="10" />
+                            <Button x:Name="ShowOpenJobs" Click="ShowOpenJobs_Click" Content="Show Open Jobs" HorizontalAlignment="Stretch"    FontSize="10" />
                         </UniformGrid>
                     </Grid>
                 </Border>
