@@ -36,6 +36,5 @@ namespace introprog_port2_contractor.Services
             contractors.Remove(oldContractor);  
         }
 
-
     }
 }
