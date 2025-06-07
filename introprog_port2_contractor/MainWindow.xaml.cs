@@ -58,7 +58,7 @@ namespace introprog_port2_contractor
                 contractorService.AddContractor(newContractor);
                 ContractorTable.ItemsSource = contractorService.GetContractors();
                 LoadUnassignedContractors();
-
+                // clears the form so it is easy to add a new contractor 
                 FirstName.Clear();
                 LastName.Clear();
                 DateOfBirth.SelectedDate = null;
@@ -78,7 +78,7 @@ namespace introprog_port2_contractor
             ContractorTable.ItemsSource = contractorService.GetContractors();
         }
 
-
+        // only shows the list of jobs if there is at least one to show
         private void GetJobs_Click(object sender, RoutedEventArgs e)
         {
             if (JobService.GetJobs().Count > 0) {
@@ -101,6 +101,7 @@ namespace introprog_port2_contractor
             {
             Job newJob = new Job(JobTitle.Text, jobdate, cost, false , null );
             JobService.CreateJob(newJob);
+                // after job is created, we refresh the list, and reset the form so it is easy to add a new job 
             JobTable.ItemsSource = JobService.GetJobs();
             JobTitle.Clear(); 
             Cost.Clear();
@@ -113,6 +114,7 @@ namespace introprog_port2_contractor
             }            
         }
 
+        // when job is completed, we will send the contractor back to the pool ,and mark the job as complete
         private void CompleteJob_Click(object sender, RoutedEventArgs e)
         {
             Job jobtobeClosed = (Job)JobTable.SelectedItem;
@@ -130,6 +132,7 @@ namespace introprog_port2_contractor
             }
         }
 
+        // when the job is assigned, we marked the contractor as assigned, and assign the contractor to the job
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {
             Job selectedJob = (Job)JobTable.SelectedItem;
