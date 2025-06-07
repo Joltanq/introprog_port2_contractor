@@ -31,9 +31,19 @@ namespace introprog_port2_contractor.Services
         public List<Job> Reporting_SearchByCost(int minCost,int maxCost)
         {
             return GetJobs().Where(job =>  job.Cost >= minCost && job.Cost <= maxCost).ToList();
-            //JobReporting.ItemsSource = JobService.GetJobs().Where(j => j.Cost >= mincost && j.Cost <= maxcost).ToList();
+        }
+
+        public void CompleteJob(Job completedJob, Contractor finishingContractor)
+        {
+            completedJob.Completed = true;
+            completedJob.ContractorAssigned = null;
+            finishingContractor.IsAssigned = false; 
 
         }
+
+
+
+       
     }
 }
     

@@ -120,12 +120,16 @@ namespace introprog_port2_contractor
             if (jobtobeClosed.Completed == false && jobtobeClosed.ContractorAssigned != null)
             {
             //Contractor contractortobeUnassigned = (Contractor)jobtobeClosed.ContractorAssigned;
-            jobtobeClosed.Title = jobtobeClosed.Title;
-            jobtobeClosed.Cost = jobtobeClosed.Cost;
-            jobtobeClosed.JobDate = jobtobeClosed.JobDate;
-            jobtobeClosed.Completed = true;
-            jobtobeClosed.ContractorAssigned.IsAssigned = false;
-            jobtobeClosed.ContractorAssigned = null;
+            //jobtobeClosed.Title = jobtobeClosed.Title;
+            //jobtobeClosed.Cost = jobtobeClosed.Cost;
+            //jobtobeClosed.JobDate = jobtobeClosed.JobDate;
+            //jobtobeClosed.Completed = true;
+            //jobtobeClosed.ContractorAssigned.IsAssigned = false;
+            //jobtobeClosed.ContractorAssigned = null;
+            JobService.CompleteJob(jobtobeClosed,jobtobeClosed.ContractorAssigned);
+                contractorService.GetContractors();
+
+
             RefreshTables();
             LoadUnassignedContractors();
             }
@@ -142,7 +146,6 @@ namespace introprog_port2_contractor
             if (selectedJob != null)
             {
                 Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem;
-                //Job selectedJob = (Job)JobTable.SelectedItem;
                 selectedJob.Title = selectedJob.Title;
                 selectedJob.Cost = selectedJob.Cost;
                 selectedJob.JobDate = selectedJob.JobDate;
@@ -193,6 +196,7 @@ namespace introprog_port2_contractor
 
         private void Button_CostSearch_Click(object sender, RoutedEventArgs e)
         {
+
             JobReporting.ItemsSource =  JobService.Reporting_SearchByCost(int.Parse(MinCostSearch.Text), int.Parse(MaxCostSearch.Text));
         }
     }
