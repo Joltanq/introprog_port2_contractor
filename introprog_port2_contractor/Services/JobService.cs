@@ -41,7 +41,12 @@ namespace introprog_port2_contractor.Services
 
         }
 
+        public void AssignJob(Job assignJob,Contractor assignContractor)
+        {
+            assignJob.ContractorAssigned = assignContractor;
+            assignContractor.IsAssigned = true;
 
+        }
 
        
     }

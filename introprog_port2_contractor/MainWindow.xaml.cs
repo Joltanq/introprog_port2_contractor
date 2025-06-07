@@ -119,17 +119,8 @@ namespace introprog_port2_contractor
 
             if (jobtobeClosed.Completed == false && jobtobeClosed.ContractorAssigned != null)
             {
-            //Contractor contractortobeUnassigned = (Contractor)jobtobeClosed.ContractorAssigned;
-            //jobtobeClosed.Title = jobtobeClosed.Title;
-            //jobtobeClosed.Cost = jobtobeClosed.Cost;
-            //jobtobeClosed.JobDate = jobtobeClosed.JobDate;
-            //jobtobeClosed.Completed = true;
-            //jobtobeClosed.ContractorAssigned.IsAssigned = false;
-            //jobtobeClosed.ContractorAssigned = null;
+
             JobService.CompleteJob(jobtobeClosed,jobtobeClosed.ContractorAssigned);
-                contractorService.GetContractors();
-
-
             RefreshTables();
             LoadUnassignedContractors();
             }
@@ -142,16 +133,12 @@ namespace introprog_port2_contractor
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {
             Job selectedJob = (Job)JobTable.SelectedItem;
-
+            Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem;
+            
             if (selectedJob != null)
             {
-                Contractor selectedContractor = (Contractor)ContractorAssigned.SelectedItem;
-                selectedJob.Title = selectedJob.Title;
-                selectedJob.Cost = selectedJob.Cost;
-                selectedJob.JobDate = selectedJob.JobDate;
-                selectedJob.Completed = selectedJob.Completed;
-                selectedJob.ContractorAssigned = selectedContractor;
-                selectedContractor.IsAssigned = true;
+                JobService.AssignJob(selectedJob, selectedContractor);  
+
                 RefreshTables();
                 LoadUnassignedContractors();
             }
