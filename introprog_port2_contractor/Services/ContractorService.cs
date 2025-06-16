@@ -24,7 +24,6 @@ namespace introprog_port2_contractor.Services
             return contractors.ToList();
         }
 
-        
 
         public void AddContractor(Contractor newContractor)
         {

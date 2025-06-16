@@ -25,6 +25,7 @@
                     </Grid.ColumnDefinitions>
                 
                      <!-- Layout for Contractor Panel-->
+                    <!-- is the section in the top left -->
                     <Border Grid.Column="0" BorderBrush="Black" BorderThickness="2" Margin="5">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -62,6 +63,7 @@
                     </Border>
                                         
                      <!-- Layout for Job Panel-->
+                    <!-- is the section in the top right-->
                 <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2" Margin="5">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -83,7 +85,7 @@
                         <TextBlock Text="Title" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
                         <TextBox x:Name="JobTitle" Grid.Column="1" Grid.Row="1" BorderBrush="Black"/>
                         <TextBlock Text="Cost" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
-                            <TextBox x:Name="Cost" Grid.Column="1" Grid.Row="2" BorderBrush="Black"/>
+                        <TextBox x:Name="Cost" Grid.Column="1" Grid.Row="2" BorderBrush="Black"/>
 
                         <TextBlock Text="Job Date" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10"/>
                         <DatePicker x:Name="JobDate" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch"   BorderBrush="Black"/>
@@ -126,16 +128,13 @@
 
                 <Button x:Name="CompleteJob" Click="CompleteJob_Click" Grid.Row="4"  Content="Complete Job"  FontSize="10" />
                 <DataGrid  x:Name="JobTable"  Grid.Row="5"  AutoGenerateColumns="True" VerticalScrollBarVisibility="Visible"/>
-                    <!--
-                -->
+                  
             </Grid>
 
         </Border>
-
-
-
         </Grid>
         </TabItem>
+        
         <!-- Reporting panel -->
         <TabItem Header="Reporting">
             <Grid>

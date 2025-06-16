@@ -53,7 +53,6 @@ namespace introprog_port2_contractor.Services
         {
             assignJob.ContractorAssigned = assignContractor;
             assignContractor.IsAssigned = true;
-
         }
 
        

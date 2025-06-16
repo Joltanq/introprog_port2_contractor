@@ -83,7 +83,6 @@ namespace introprog_port2_contractor
         {
             if (JobService.GetJobs().Count > 0) {
                 JobTable.ItemsSource = JobService.GetJobs();
-
             }
             else
             {
@@ -149,10 +148,8 @@ namespace introprog_port2_contractor
             {
                 MessageBox.Show("Please select a job");
             }
-
-      
-
         }
+
 
         public void LoadUnassignedContractors()
         {
@@ -164,7 +161,6 @@ namespace introprog_port2_contractor
             if (unassignedContractors.Count == 0)
             {
                 ContractorAssigned.ItemsSource = noavailableContractors;
-
             }
             else
             {
@@ -172,11 +168,11 @@ namespace introprog_port2_contractor
             }
         }
 
+        // this methods makes it easier to update the table after any action is taken
         public void RefreshTables()
         {
             JobTable.ItemsSource = JobService.GetJobs();
             ContractorTable.ItemsSource = contractorService.GetContractors();
-
         }
 
         private void ShowOpenJobs_Click(object sender, RoutedEventArgs e)

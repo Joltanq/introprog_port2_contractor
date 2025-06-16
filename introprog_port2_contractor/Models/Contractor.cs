@@ -29,21 +29,7 @@ namespace introprog_port2_contractor.Models
         // overload to create unavailable
         public Contractor(string firstName)
         {
-
             FirstName = firstName;
-
         }
-
-
-        public override string ToString()
-        {
-            return $"{FirstName} {LastName} - {HourlyWage:C}/hr";
-        }
-
-
-
-
-
-
     }
 }
