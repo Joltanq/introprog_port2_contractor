@@ -7,7 +7,7 @@ using introprog_port2_contractor.Models;
 
 namespace introprog_port2_contractor.Services
 {
-    class ContractorService
+    public class ContractorService
     {
         List<Contractor> contractors = new List<Contractor>();
         
@@ -17,6 +17,11 @@ namespace introprog_port2_contractor.Services
             contractors.Add(new Contractor("Bob", "Joe", new DateTime(1991, 01, 01), 100,true));
             contractors.Add(new Contractor("Jane", "Fonda", new DateTime(1985, 05, 01), 100, false));
 
+        }
+
+        public ContractorService(List<Contractor> contractors)
+        {
+            this.contractors = contractors;
         }
 
         public List<Contractor> GetContractors()

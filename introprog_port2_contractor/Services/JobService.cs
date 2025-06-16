@@ -9,7 +9,7 @@ using introprog_port2_contractor.Models;
 
 namespace introprog_port2_contractor.Services
 {
-    class JobService
+    public class JobService
     {
         List<Job> jobs = new List<Job>();
 

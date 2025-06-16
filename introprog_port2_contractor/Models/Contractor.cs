@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace introprog_port2_contractor.Models
 {
-    class Contractor
+    public class Contractor
     {
         public int id { get; set; }
         public string FirstName { get; set; }

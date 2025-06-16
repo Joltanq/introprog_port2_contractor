@@ -10,7 +10,7 @@ using introprog_port2_contractor.Models;
 
 namespace introprog_port2_contractor.Models
 {
-    class Job
+    public class Job
     {
         public string Title { get; set; }
         public DateTime JobDate { get; set; }
