@@ -31,5 +31,12 @@ namespace introprog_port2_contractor.Models
         {
             FirstName = firstName;
         }
+
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName} - {HourlyWage:C}/hr";
+        }
+
     }
 }

@@ -29,5 +29,10 @@ namespace introprog_port2_contractor.Models
             ContractorAssigned = contractorAssigned;
         }
 
+        public override string ToString()
+        {
+            return $"{Title} {JobDate} {Cost} {Completed} {ContractorAssigned}";
+        }
+
     }
 }
