@@ -47,7 +47,6 @@ namespace introprog_port2_contractor.Services
         // function is used to close a job. this returns the contractor back to the pool
         public void CompleteJob(Job completedJob, Contractor finishingContractor)
         {
-            // no need to check if job is already closed because you cannot assign a contractor to a closed job
             completedJob.Completed = true;
             completedJob.ContractorAssigned = null;
             finishingContractor.IsAssigned = false; 
@@ -59,7 +58,7 @@ namespace introprog_port2_contractor.Services
         // doing validation on UI too, checking if job is closed and a contractor assigned for safety so business logic is not violated  
         public void AssignJob(Job assignJob,Contractor assignContractor)
         {
-            if (assignJob.Completed == false && assignJob.ContractorAssigned == null)
+            if (assignJob.Completed == false && assignJob.ContractorAssigned == null && assignContractor.IsAssigned == false)
             {
                 assignJob.ContractorAssigned = assignContractor;
                 assignContractor.IsAssigned = true;

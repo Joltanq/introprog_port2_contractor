@@ -107,6 +107,24 @@ namespace UnitTests
             Assert.AreEqual(assignedContractor, jobtobeCompleted.ContractorAssigned);
         }
 
+
+        [TestMethod]
+        public void AssignJob_AssigningUnavailableContractor()
+        {
+            // Arrange 
+            Contractor assignedContractor = new Contractor("John", "Cena", new DateTime(1991, 01, 01), 100, true);
+            Job jobtobeCompleted = new Job("To be complete", new DateTime(2024, 01, 01), 100, false, null);
+            JobService jobService = new([jobtobeCompleted]);
+
+
+            // Act
+            jobService.AssignJob(jobtobeCompleted, assignedContractor);
+
+            //Assert 
+            Assert.IsTrue(assignedContractor.IsAssigned);
+            Assert.IsNull(jobtobeCompleted.ContractorAssigned);
+        }
+
         [TestMethod]
         public void AssignJob_CannotAssignContractorIfOneExists()
         {
