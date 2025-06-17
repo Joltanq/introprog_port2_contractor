@@ -73,9 +73,17 @@ namespace introprog_port2_contractor
 
         private void RemoveContractor_Click(object sender, RoutedEventArgs e)
         {
+            
             Contractor oldContractor = (Contractor)ContractorTable.SelectedItem;
-            contractorService.RemoveContractor(oldContractor);
-            ContractorTable.ItemsSource = contractorService.GetContractors();
+            if (oldContractor.IsAssigned == false)
+            {
+                contractorService.RemoveContractor(oldContractor);
+                ContractorTable.ItemsSource = contractorService.GetContractors();
+
+            }else
+            {
+                MessageBox.Show("Cannot delete a contractor that is currently assigned");   
+            }
         }
 
         // only shows the list of jobs if there is at least one to show
@@ -139,10 +147,16 @@ namespace introprog_port2_contractor
             
             if (selectedJob != null)
             {
+                if(selectedJob.ContractorAssigned == null )
+                {
                 JobService.AssignJob(selectedJob, selectedContractor);  
-
                 RefreshTables();
                 LoadUnassignedContractors();
+
+                }else
+                {
+                    MessageBox.Show("Job already has a contractor assigned");
+                }
             }
             else
             {
