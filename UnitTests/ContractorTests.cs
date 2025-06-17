@@ -39,7 +39,23 @@ namespace UnitTests
             CollectionAssert.Contains(contractorService.GetContractors(), testContractor);
             // Checks that the list length is correct
             Assert.AreEqual(3, contractorService.GetContractors().Count);
+        }
+        
+        // system currently allows for duplicate contractors to be added. this tests to ensure functionality is not unintentionally changed in the future
+        [TestMethod]
+        public void AddDuplicateContractors()
+        {
+            // Arrange
+            ContractorService contractorService = new([new Contractor("John", "Cena", new DateTime(1991, 01, 01), 100, true), new Contractor("Jane", "Fonda", new DateTime(1985, 05, 01), 100, false)]);
+            Contractor testContractor = new Contractor("Bob", "Joe", new DateTime(1991, 01, 01), 100, true);
 
+            // Act
+            contractorService.AddContractor(testContractor);
+            contractorService.AddContractor(testContractor);
+
+            // Assert
+            // Checks that the list length is correct
+            Assert.AreEqual(4, contractorService.GetContractors().Count);
         }
 
 

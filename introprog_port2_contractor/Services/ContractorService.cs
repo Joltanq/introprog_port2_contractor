@@ -19,6 +19,7 @@ namespace introprog_port2_contractor.Services
 
         }
 
+        // this constructor was created so i can easily have create unit tests
         public ContractorService(List<Contractor> contractors)
         {
             this.contractors = contractors;
