@@ -25,7 +25,7 @@ namespace UnitTests
 
         // there is no point testing adding a constructor with invalid fields as the constructor will not allow me to do so
         [TestMethod]
-        public void AddContractorWithValidFields()
+        public void AddContractor_WithValidFields()
         {
             // Arrange
             ContractorService contractorService = new([new Contractor("John", "Cena", new DateTime(1991, 01, 01), 100, true), new Contractor("Jane", "Fonda", new DateTime(1985, 05, 01), 100, false)]);
@@ -43,7 +43,7 @@ namespace UnitTests
         
         // system currently allows for duplicate contractors to be added. this tests to ensure functionality is not unintentionally changed in the future
         [TestMethod]
-        public void AddDuplicateContractors()
+        public void AddContractor_DuplicateContractors()
         {
             // Arrange
             ContractorService contractorService = new([new Contractor("John", "Cena", new DateTime(1991, 01, 01), 100, true), new Contractor("Jane", "Fonda", new DateTime(1985, 05, 01), 100, false)]);
@@ -60,7 +60,7 @@ namespace UnitTests
 
 
         [TestMethod]
-        public void DeletingContractorRemovesFromList()
+        public void RemoveContractor_RemovesFromList()
         {
             // Arrange
             Contractor testContractor = new Contractor("John", "Cena", new DateTime(1991, 01, 01), 100, true);
@@ -75,6 +75,23 @@ namespace UnitTests
             CollectionAssert.DoesNotContain(contractorService.GetContractors(), contractortobeDeleted);
             Assert.AreEqual(1,contractorService.GetContractors().Count);    
         }
+
+        [TestMethod]
+        public void RemoveContractor_CannotRemoveAssignedContractor()
+        {
+            // Arrange
+            Contractor testContractor = new Contractor("John", "Cena", new DateTime(1991, 01, 01), 100, true);
+            ContractorService contractorService = new([testContractor]);
+
+
+            // Act
+            contractorService.RemoveContractor(testContractor);
+
+            // Assert
+            CollectionAssert.Contains(contractorService.GetContractors(), testContractor);
+            Assert.AreEqual(1, contractorService.GetContractors().Count);
+        }
+
 
 
     }

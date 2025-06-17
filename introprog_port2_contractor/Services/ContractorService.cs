@@ -38,7 +38,10 @@ namespace introprog_port2_contractor.Services
 
         public void RemoveContractor(Contractor oldContractor)
         {
-            contractors.Remove(oldContractor);  
+            if (oldContractor.IsAssigned == false)
+            {
+                contractors.Remove(oldContractor);  
+            }
         }
 
     }
