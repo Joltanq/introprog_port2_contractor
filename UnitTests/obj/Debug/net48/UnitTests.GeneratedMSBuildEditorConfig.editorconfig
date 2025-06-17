@@ -1,8 +1,0 @@
-is_global = true
-build_property.RootNamespace = UnitTests
-build_property.ProjectDir = C:\Users\joelt\source\repos\introprog_port2_contractor\UnitTests\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.CsWinRTUseWindowsUIXamlProjections = false
-build_property.EffectiveAnalysisLevelStyle = 
-build_property.EnableCodeStyleSeverity = 

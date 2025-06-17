@@ -85,6 +85,7 @@ namespace UnitTests
             // Act
             jobService.CompleteJob(jobtobeCompleted, assignedContractor);
 
+
             //Assert 
             Assert.IsTrue(jobtobeCompleted.Completed);
             Assert.IsFalse(assignedContractor.IsAssigned);
