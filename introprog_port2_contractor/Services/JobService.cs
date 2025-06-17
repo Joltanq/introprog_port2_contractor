@@ -19,6 +19,12 @@ namespace introprog_port2_contractor.Services
             jobs.Add(new Job("Plumbing", new DateTime(2024, 01, 01), 100, true, null));
             jobs.Add(new Job("To be complete", new DateTime(2024, 01, 01), 100, false, null));
         }
+        
+        // this constructor was created so i can easily have create unit tests
+        public JobService(List<Job> jobs)
+        {
+            this.jobs = jobs;   
+        }
 
         public void CreateJob(Job newJob)
         {
@@ -41,6 +47,7 @@ namespace introprog_port2_contractor.Services
         // function is used to close a job. this returns the contractor back to the pool
         public void CompleteJob(Job completedJob, Contractor finishingContractor)
         {
+            // no need to check if job is already closed because you cannot assign a contractor to a closed job
             completedJob.Completed = true;
             completedJob.ContractorAssigned = null;
             finishingContractor.IsAssigned = false; 
@@ -49,13 +56,15 @@ namespace introprog_port2_contractor.Services
 
         // when function is called, contractor is assigned to the job.
         // we also update the job so the contractor is maped to the job
+        // doing validation on UI too, checking if job is closed and a contractor assigned for safety so business logic is not violated  
         public void AssignJob(Job assignJob,Contractor assignContractor)
         {
-            assignJob.ContractorAssigned = assignContractor;
-            assignContractor.IsAssigned = true;
+            if (assignJob.Completed == false && assignJob.ContractorAssigned == null)
+            {
+                assignJob.ContractorAssigned = assignContractor;
+                assignContractor.IsAssigned = true;
+            }
         }
-
-       
     }
 }
     
